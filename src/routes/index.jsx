@@ -15,6 +15,17 @@ import TermsConditionsPage from "@/pages/TermsConditions/TermsConditionsPage";
 import PrivacyPolicyPage from "@/pages/PrivacyPolicy/PrivacyPolicyPage";
 import Ecommerce from "@/pages/Ecommerce/Ecommerce";
 
+// Dashboard imports
+import DashboardApp from "@/dashboard/DashboardApp";
+import Dashboard from "@/dashboard/Dashboard";
+import Overview from "@/dashboard/Overview";
+import ContactForms from "@/dashboard/ContactForms";
+import Analytics from "@/dashboard/Analytics";
+import Users from "@/dashboard/Users";
+import Reports from "@/dashboard/Reports";
+import Settings from "@/dashboard/Settings";
+import Login from "@/dashboard/Login";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -76,7 +87,48 @@ export const router = createBrowserRouter([
       {
         path: "ecommerce",
         element: <Ecommerce />
+      },
+      {
+        path: "admin-login",
+        element: <Login />
       }
     ],
   },
+  // Dashboard routes
+  {
+    path: "/dashboard",
+    element: <DashboardApp />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "",
+            element: <Overview />,
+          },
+          {
+            path: "contacts",
+            element: <ContactForms />,
+          },
+          {
+            path: "analytics",
+            element: <Analytics />,
+          },
+          {
+            path: "users",
+            element: <Users />,
+          },
+          {
+            path: "reports",
+            element: <Reports />,
+          },
+          {
+            path: "settings",
+            element: <Settings />,
+          }
+        ],
+      }
+    ],
+  }
 ]);

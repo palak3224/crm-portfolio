@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link as RouterLink } from 'react-router-dom';
 import { 
   DollarSign, 
   Check, 
@@ -153,15 +154,17 @@ const PricingCard = ({
               </div>
 
               {/* CTA Button */}
-              <motion.button
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 mb-8 relative z-10 ${
-                  isCustom ? 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 shadow-lg hover:shadow-gray-500/25' : colors.button
-                }`}
-              >
-                {isCustom ? 'Contact Us' : 'Start Now'}
-              </motion.button>
+              <RouterLink to="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 mb-8 relative z-10 ${
+                    isCustom ? 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 shadow-lg hover:shadow-gray-500/25' : colors.button
+                  }`}
+                >
+                  {isCustom ? 'Contact Us' : 'Start Now'}
+                </motion.button>
+              </RouterLink>
 
               {/* Features */}
               <div className="space-y-5 relative z-10">
@@ -230,15 +233,17 @@ const PricingCard = ({
             </div>
 
             {/* CTA Button */}
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 mb-8 relative z-10 ${
-                isCustom ? 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 shadow-lg hover:shadow-gray-500/25' : colors.button
-              }`}
-            >
-              {isCustom ? 'Contact Us' : 'Start Now'}
-            </motion.button>
+            <RouterLink to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 mb-8 relative z-10 ${
+                  isCustom ? 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 shadow-lg hover:shadow-gray-500/25' : colors.button
+                }`}
+              >
+                {isCustom ? 'Contact Us' : 'Start Now'}
+              </motion.button>
+            </RouterLink>
 
             {/* Features */}
             <div className="space-y-5 relative z-10">

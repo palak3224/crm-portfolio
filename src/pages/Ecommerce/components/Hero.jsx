@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
   return (
@@ -44,9 +45,11 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="pt-4"
             >
-              <button className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                Get a Free Quote
-              </button>
+              <Link to="/contact">
+                <button className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                  Get a Free Quote
+                </button>
+              </Link>
               <p className="text-sm text-gray-500 mt-4">
                 Free Consultation. No Credit Card Required.
               </p>

@@ -1,0 +1,123 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(USER)
+  status    UserStatus @default(ACTIVE)
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Contact {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  phone       String?
+  message     String   @db.Text
+  status      ContactStatus @default(NEW)
+  source      String   @default("Contact Form")
+  location    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("contacts")
+}
+
+model Analytics {
+  id            Int      @id @default(autoincrement())
+  pageViews     Int      @default(0)
+  uniqueVisitors Int     @default(0)
+  bounceRate    Float    @default(0)
+  sessionDuration Float  @default(0)
+  date          DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("analytics")
+}
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  page      String
+  views     Int      @default(1)
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("page_views")
+}
+
+model TrafficSource {
+  id        Int      @id @default(autoincrement())
+  source    String
+  visitors  Int      @default(0)
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("traffic_sources")
+}
+
+model Report {
+  id          Int      @id @default(autoincrement())
+  name        String
+  type        ReportType
+  description String?  @db.Text
+  status      ReportStatus @default(READY)
+  size        String?
+  format      String   @default("PDF")
+  lastGenerated DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("reports")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  USER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+}
+
+enum ContactStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+}
+
+enum ReportType {
+  CONTACT
+  ANALYTICS
+  USERS
+  CONVERSION
+  PERFORMANCE
+}
+
+enum ReportStatus {
+  READY
+  GENERATING
+  FAILED
+}

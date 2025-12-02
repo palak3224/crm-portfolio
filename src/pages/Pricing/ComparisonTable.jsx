@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link as RouterLink } from 'react-router-dom';
 import { 
   DollarSign, 
   Check, 
@@ -154,14 +155,16 @@ const MobilePlanCard = ({ plan, billingCycle, features, isExpanded, onToggle }) 
 
       {/* CTA Button */}
       <div className="p-6 border-t border-gray-200">
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 
-                     bg-black hover:bg-gray-900 shadow-lg hover:shadow-gray-500/25"
-        >
-          {plan.isCustom ? 'Contact Sales' : 'Get Started'}
-        </motion.button>
+        <RouterLink to="/contact">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 
+                       bg-black hover:bg-gray-900 shadow-lg hover:shadow-gray-500/25"
+          >
+            {plan.isCustom ? 'Contact Sales' : 'Get Started'}
+          </motion.button>
+        </RouterLink>
       </div>
     </motion.div>
   );
@@ -521,17 +524,19 @@ const ComparisonTable = () => {
               <div></div>
               {plans.map((plan, index) => (
                 <div key={plan.name} className="text-center">
-                  <motion.button
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                    className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 
-                               bg-black hover:bg-gray-900 shadow-lg hover:shadow-gray-500/25"
-                  >
-                    {plan.isCustom ? 'Contact Sales' : 'Get Started'}
-                  </motion.button>
+                  <RouterLink to="/contact">
+                    <motion.button
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                      className="w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300 
+                                 bg-black hover:bg-gray-900 shadow-lg hover:shadow-gray-500/25"
+                    >
+                      {plan.isCustom ? 'Contact Sales' : 'Get Started'}
+                    </motion.button>
+                  </RouterLink>
                 </div>
               ))}
             </div>

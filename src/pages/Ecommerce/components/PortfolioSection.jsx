@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 
 // Portfolio projects data
@@ -8,7 +9,7 @@ const portfolioProjects = [
     title: 'Fashion Hub E-Commerce',
     category: 'Fashion & Lifestyle',
     description: 'A modern online store featuring AI-powered recommendations, seamless checkout, and real-time inventory management.',
-    image: 'https://cdn.dribbble.com/userupload/4265482/file/original-b8ba8eeba99b699dd107399b6b1094c8.png?resize=400x0',
+    image: '/fashionhub.png',
     stats: { sales: '250K+', products: '5,000+', rating: '4.9' },
     tags: ['E-Commerce', 'AI Integration', 'Mobile App']
   },
@@ -17,7 +18,7 @@ const portfolioProjects = [
     title: 'GreenLeaf Organics',
     category: 'Health & Wellness',
     description: 'Sustainable organic products marketplace with subscription management and customer loyalty programs.',
-    image: 'https://themehunk.com/wp-content/uploads/2020/10/Vegetable-and-Fruit-Shop.png',
+    image: 'https://cdn.dribbble.com/userupload/40120302/file/original-48b56338a7336cc47d914d985da1eba1.jpg?resize=752x&vertical=center',
     stats: { sales: '180K+', products: '3,200+', rating: '4.8' },
     tags: ['Subscription', 'CRM', 'Analytics']
   },
@@ -35,7 +36,7 @@ const portfolioProjects = [
     title: 'HomeDecor Paradise',
     category: 'Home & Living',
     description: 'Premium home decor marketplace with 3D product visualization and interior design consultation booking.',
-    image: 'https://cdn.dribbble.com/userupload/42577671/file/original-73916e47c7e5b3ddc7269e0d71404610.png?format=webp&resize=400x300&vertical=center',
+    image: 'https://cdn.dribbble.com/userupload/17600087/file/original-449c27bd3276b870bef7d87f151125ba.jpg?resize=752x&vertical=center',
     stats: { sales: '310K+', products: '6,400+', rating: '4.7' },
     tags: ['3D Visualization', 'Booking System', 'Reviews']
   }
@@ -76,7 +77,7 @@ const PortfolioSection = () => {
           </h2>
 
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We've helped businesses transform their online presence and achieve remarkable growth. 
+            We&apos;ve helped businesses transform their online presence and achieve remarkable growth. 
             Explore our most successful e-commerce projects.
           </p>
         </motion.div>
@@ -100,7 +101,7 @@ const PortfolioSection = () => {
               <img
                 src={portfolioProjects[activeProject].image}
                 alt={portfolioProjects[activeProject].title}
-                className="w-full h-[500px] object-cover"
+                className={`w-full h-[500px] ${activeProject === 0 ? 'object-cover bg-white' : 'object-cover'}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 via-purple-600/10 to-transparent" />
             </div>
@@ -221,9 +222,11 @@ const PortfolioSection = () => {
           <p className="text-gray-600 mb-6 text-lg">
             Want to be our next success story?
           </p>
-          <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
-            Start Your Project Today
-          </button>
+          <Link to="/contact">
+            <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              Start Your Project Today
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>

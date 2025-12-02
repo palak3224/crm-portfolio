@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ShoppingBag, CreditCard, Settings, Check } from 'lucide-react';
 
 export default function PricingSection() {
@@ -216,14 +217,16 @@ export default function PricingSection() {
                     </div>
 
                     {/* Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold py-4 rounded-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2"
-                    >
-                      <span>{plan.buttonText}</span>
-                      <span>→</span>
-                    </motion.button>
+                    <Link to="/contact">
+                      <motion.button
+                        whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold py-4 rounded-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2"
+                      >
+                        <span>{plan.buttonText}</span>
+                        <span>→</span>
+                      </motion.button>
+                    </Link>
                   </div>
                 </motion.div>
               </motion.div>

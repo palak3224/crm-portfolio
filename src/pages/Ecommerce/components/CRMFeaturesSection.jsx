@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ProductmanagmentImg from '@/assets/e-comm/product-management.webp'
 import UsermanagementImg from '@/assets/e-comm/user-management.webp'
 import OrderImg from '@/assets/e-comm/order-tracking.webp'
@@ -132,9 +133,11 @@ const FeatureCard = ({ title, description, image, gradient, index, totalCards })
               </p>
               
               <div className="pt-4">
-                <button className={`bg-gradient-to-r ${gradient} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300`}>
-                  Learn More
-                </button>
+                <Link to="/contact">
+                  <button className={`bg-gradient-to-r ${gradient} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300`}>
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
 
